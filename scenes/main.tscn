@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://buccmi01bgdc0"]
+
+[ext_resource type="Texture2D" uid="uid://dj304w1upx6vd" path="res://assets/art/Joint2.png" id="1_gqwjp"]
+[ext_resource type="Texture2D" uid="uid://c7wyx3u84nsqe" path="res://assets/art/LeftCrane.png" id="2_jaa3b"]
+[ext_resource type="Texture2D" uid="uid://bqtrnchjro5ac" path="res://assets/art/RightCrane.png" id="3_b5mps"]
+[ext_resource type="Shader" path="res://shaders/background.gdshader" id="4_mgxx6"]
+[ext_resource type="Texture2D" uid="uid://cmm103vmeu4wd" path="res://assets/art/Wire.png" id="4_v4ub1"]
+[ext_resource type="Texture2D" uid="uid://cdka0hwbpk50n" path="res://assets/art/BackgroundTile.png" id="5_pnue7"]
+[ext_resource type="Texture2D" uid="uid://bk77c85x731lo" path="res://assets/art/DropBin.png" id="6_n5nnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iddd6"]
+shader = ExtResource("4_mgxx6")
+shader_parameter/tiling = Vector2(25, 25)
+
+[node name="Main" type="Node2D"]
+
+[node name="Crane" type="Node2D" parent="."]
+position = Vector2(598, 260)
+
+[node name="Joint" type="Sprite2D" parent="Crane"]
+z_index = 10
+texture = ExtResource("1_gqwjp")
+
+[node name="Left" type="Sprite2D" parent="Crane/Joint"]
+texture = ExtResource("2_jaa3b")
+
+[node name="Right" type="Sprite2D" parent="Crane/Joint"]
+texture = ExtResource("3_b5mps")
+
+[node name="Wire" type="Sprite2D" parent="Crane"]
+position = Vector2(0, -76)
+texture = ExtResource("4_v4ub1")
+
+[node name="Backdrop" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_repeat = 2
+material = SubResource("ShaderMaterial_iddd6")
+scale = Vector2(18, 18)
+texture = ExtResource("5_pnue7")
+centered = false
+
+[node name="DropBin" type="Sprite2D" parent="."]
+position = Vector2(126, 560)
+texture = ExtResource("6_n5nnw")
